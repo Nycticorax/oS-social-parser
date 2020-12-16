@@ -89,9 +89,8 @@ instance FromJSON DiscAuthor where
 instance ToJSON DiscMessage where
     toJSON DiscMessage{..} = object [
         "from_id" .= authid auth,
-        "type" .= t,
-        "date" .= timestamp,
-        "content" .= content
+        "content" .= content,
+        "date" .= timestamp
         ]
 
 data RedditMessages = RedditMessages { reddmess :: [RedditMessage] }
@@ -114,7 +113,7 @@ instance FromJSON RedditMessage where
 instance ToJSON RedditMessage where
     toJSON RedditMessage{..} = object [
         "from_id" .= author,
-        "text" .= selftext,
+        "content" .= selftext,
         "date" .= created_utc,
         "title" .= title
         ]
