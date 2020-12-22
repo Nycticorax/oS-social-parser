@@ -8,11 +8,12 @@ import           Control.Monad (guard)
 import           Data.Aeson
 import           Data.Foldable (asum)
 import qualified Data.Text     as T
+import           Data.Time     (NominalDiffTime)
 import qualified Data.Vector   as V
 import           Text.Read     (readMaybe)
 import           Time
 
-data Service = Telegram String | Reddit String | Discord String
+data Service = Telegram String | Reddit String | Discord String | Forums String
 
 -- TELEGRAM
 
@@ -119,3 +120,15 @@ instance ToJSON RedditMessage where
         ]
 
 parseText s = if T.null s then return "" else return s
+
+data ForumsPost = ForumsPost { postText :: T.Text, postDate :: T.Text , postTitle :: T.Text, postThreadId :: T.Text , postParentThreadId :: T.Text , postAuthorId :: T.Text  } deriving (Show)
+
+instance ToJSON ForumsPost where
+    toJSON ForumsPost{..} = object [
+        "from_id" .= postAuthorId,
+        "content" .= postText,
+        "date" .= postDate,
+        "title" .= postTitle,
+        "thread_id" .= postThreadId,
+        "parent_thread_id" .= postParentThreadId
+        ]

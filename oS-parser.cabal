@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 1a11874f8cc0d54e2b120a3677b30667487d3a1551767a1cbd49ed7b85415dd0
+-- hash: 351d5fc89e87be712f357f293b4667eaeb7f26db0f1a6c70b7e547d78bdabdc5
 
 name:           oS-parser
 version:        0.1.0.0
@@ -38,7 +38,9 @@ library
       aeson
     , base >=4.7 && <5
     , bytestring
+    , containers
     , directory
+    , tagsoup
     , text
     , time
     , vector
@@ -55,8 +57,10 @@ executable oS-parser-exe
       aeson
     , base >=4.7 && <5
     , bytestring
+    , containers
     , directory
     , oS-parser
+    , tagsoup
     , text
     , time
     , vector
@@ -74,8 +78,10 @@ test-suite oS-parser-test
       aeson
     , base >=4.7 && <5
     , bytestring
+    , containers
     , directory
     , oS-parser
+    , tagsoup
     , text
     , time
     , vector
